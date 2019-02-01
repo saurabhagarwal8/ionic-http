@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      CRUD
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div *ngFor="let item of items">
+    {{item.todos}}
+  </div>
+
+  <ion-item>
+    <ion-input type="name" placeholder="Input" [(ngModel)]='name'></ion-input>
+  </ion-item>
+  <button ion-button (click)="add()">Add</button>
+</ion-content>
