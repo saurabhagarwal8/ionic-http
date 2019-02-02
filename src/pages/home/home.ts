@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { HttpClient } from '@angular/common/http';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
 
@@ -11,13 +10,14 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 export class HomePage {
 
   name:any;
-  items:any;
+  items:any=[];
 
-  constructor(public navCtrl: NavController,public http: HttpClient) {
+  constructor(public navCtrl: NavController,public http: Http) {
 
-    this.http.get('http://localhost:8888/get').subscribe(data=>{
-         this.items=data;
-         console.log(data);
+    this.http.get('http://localhost:8888/list').subscribe(data=>{
+      if(data)
+         this.items=data.json();
+         console.log(data.json());
     })
 
   }
