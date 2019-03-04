@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { Http } from '@angular/http';
 
 
 @Component({
@@ -14,10 +14,10 @@ export class HomePage {
 
   constructor(public navCtrl: NavController,public http: Http) {
 
-    this.http.get('http://localhost:8888/list').subscribe(data=>{
-      if(data)
-         this.items=data.json();
-         console.log(data.json());
+    this.http.get('http://localhost:8888/list').subscribe(res=>{
+      
+         this.items=res.json();
+         console.log(this.items);
     })
 
   }
@@ -27,8 +27,8 @@ export class HomePage {
     var body = {
       todo:this.name,
     }
-    this.http.post('http://localhost:8888/create',body).subscribe(data=>{
-      console.log(data);
+    this.http.post('http://localhost:8888/create',body).subscribe(res=>{
+      console.log(res.json());
     });
   }
 
